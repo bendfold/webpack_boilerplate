@@ -15,7 +15,6 @@ nbproject
 *.sublime-workspace
 .idea
 
-
 # Numerous always-ignore extensions
 *.bak
 *.diff
@@ -33,3 +32,4 @@ nbproject
 node_modules
 notes
 _temp
+dist
