@@ -1,0 +1,1 @@
+# Base set up for Webpack Projects
