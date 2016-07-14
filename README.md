@@ -1,6 +1,13 @@
 # Base starting point for Webpack projects
 
 ## Includes
-- CSS pre-processing via [Stylus][http://stylus-lang.com/] & [Nib][https://tj.github.io/nib/]
-- ES6 Transpiling via [Babel][https://babeljs.io/]
-- Linting via [JSHint][http://jshint.com/] / [JSHint - Options][http://jshint.com/docs/options/]
+- CSS pre-processing via [Stylus][stylus] & [Nib][nib]
+- ES6 Transpiling via [Babel][babel]
+- Linting via [JSHint][jshint] / [Options][jshint-options]
+
+
+[stylus]:<http://stylus-lang.com/>
+[nib]:<https://tj.github.io/nib/>
+[babel]:<https://babeljs.io/>
+[jshint]:<http://jshint.com/>
+[jshint-options]:<http://jshint.com/docs/options/>
