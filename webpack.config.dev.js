@@ -24,11 +24,16 @@ module.exports = {
 			},
 			{
 				test: /\.html$/,
-				loader: "raw-loader"
+				loader: 'raw-loader'
 			},
 			{
 				test: /\.styl$/,
 				loader: 'style-loader!css-loader?sourceMap!stylus-loader'
+			},
+			{
+				test: /\.js$/,
+				loaders: ['jshint', 'babel'],
+				include: path.join(__dirname, 'src')
 			}
 		]
 	},
