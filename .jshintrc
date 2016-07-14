@@ -1,3 +1,4 @@
+// http://jshint.com/docs/options/ 
 {
 	"browser": true,
 	"camelcase": false,
