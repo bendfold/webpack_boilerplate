@@ -4,7 +4,7 @@
 - CSS pre-processing via [Stylus][stylus] & [Nib][nib]
 - ES6 Transpiling via [Babel][babel]
 - Linting via [JSHint][jshint] / [Options][jshint-options]
-- Testing via [Tape][tape]
+- Testing via [Tape][tape] & [TAP][tap]
 
 
 [stylus]:<http://stylus-lang.com/>
@@ -13,3 +13,4 @@
 [jshint]:<http://jshint.com/>
 [jshint-options]:<http://jshint.com/docs/options/>
 [tape]: <https://github.com/substack/tape>
+[tap]:<http://testanything.org/>
