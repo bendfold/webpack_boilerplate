@@ -1,12 +1,8 @@
-require('../styles/index.styl') // The page is now styled
+require('../styles/index.styl'); // The page is now styled
 
-let foo = a => {
-		return b => {return a + b};
-	};
+var exampleAdder = require('./example-adder.js');
 
-
-let c = foo(5);
-
+let c = exampleAdder(5);
 console.log('c(5) => ', c(5) );
 console.log('c(10) => ', c(10) );
 console.log('c(20) => ', c(20) );
