@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rm -rf ./dist && mkdir ./dist && webpack --config webpack.config.prod.js",
     "dev": "rm -rf ./dist && mkdir ./dist && webpack --config webpack.config.dev.js  --progress -colors --watch",
-    "test": "babel-tape-runner ./test/**/*-test.js"
+    "test": "babel-tape-runner ./test/**/*-test.js | tap-summary"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.1.1",
+    "tap-summary": "^3.0.1",
     "tape": "^4.6.0",
     "webpack": "^1.13.1"
   },
