@@ -1,13 +1,19 @@
 // http://jshint.com/docs/options/ 
+// Taken from https://raw.githubusercontent.com/airbnb/javascript/master/linters/.jshintrc#
 {
 	"browser": true,
-	"camelcase": false,
-	"esnext": true,
-	"indent": 4,
-	"forin": true,
+	"jquery": true,
+	"node": true,
+	"esversion": 6,
+	"camelcase": true,
+	"eqeqeq": true,
+	"indent": 2,
+	"latedef": true,
+	"maxlen": 100,
+	"newcap": true,
 	"quotmark": "single",
-	"strict":"implied",
-	"undef":true,
+	"strict": true,
+	"undef": true,
 	"unused": true,
-	"devel": true
+	"eqnull": true
 }

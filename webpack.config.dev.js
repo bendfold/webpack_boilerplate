@@ -17,11 +17,15 @@ module.exports = {
 		})
 	],
 	module: {
-		loaders: [
+		preLoaders: [
+			// Javascript
 			{
-				test: /\.css$/,
-				loaders: ['style', 'css']
-			},
+				test: /\.js?$/,
+				loader: 'jshint-loader', 
+				exclude: /node_modules/
+			}
+		],
+		loaders: [
 			{
 				test: /\.html$/,
 				loader: 'raw-loader'
@@ -31,8 +35,8 @@ module.exports = {
 				loader: 'style-loader!css-loader?sourceMap!stylus-loader'
 			},
 			{
-				test: /\.js$/,
-				loaders: ['jshint', 'babel'],
+				test: /\.js?$/,
+				loaders: ['jshint','babel'],
 				include: path.join(__dirname, 'src')
 			}
 		]
