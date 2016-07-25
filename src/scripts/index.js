@@ -2,7 +2,7 @@ require('../styles/index.styl'); // The page is now styled
 
 var exampleAdder = require('./example-adder.js');
 
-let c = exampleAdder(5);
-console.log('c(5) => ', c(5) );
-console.log('c(10) => ', c(10) );
-console.log('c(20) => ', c(20) );
+let test = exampleAdder(5);
+console.log('test(5) => ', test(5) );
+console.log('test(10) => ', test(10) );
+console.log('test(20) => ', test(20) );

@@ -2,12 +2,14 @@
 
 ## Includes
 - CSS pre-processing via [Stylus][stylus] & [Nib][nib]
+- CSS reset from [normalize][normalize]
 - ES6 Transpiling via [Babel][babel]
 - Linting via [JSHint][jshint] / [Options][jshint-options]
 - Testing via [Tape][tape] & [TAP][tap]
 - Live-reload via [live-server][liveserver]
 
 
+[normalize]:<https://github.com/necolas/normalize.css>
 [stylus]:<http://stylus-lang.com/>
 [nib]:<https://tj.github.io/nib/>
 [babel]:<https://babeljs.io/>
