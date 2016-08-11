@@ -33,6 +33,3 @@ node_modules
 notes
 _temp
 dist
-
-# TODO take this out at the end
-src/styles/main.css

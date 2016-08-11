@@ -14,3 +14,19 @@ exports.setupCSS = function( paths ) {
 		}
 	}
 };
+
+// STYLUS CONFIG
+exports.setupStylus = function( paths ) {
+	return {
+		module : {
+			loaders: [
+				{
+					test: /\.styl$/,
+					// loader : 'style-loader!css-loader?sourceMap!stylus-loader',
+					loaders: ['style', 'css', 'stylus'],
+					include: paths
+				}
+			]
+		}
+	}
+};

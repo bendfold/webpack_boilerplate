@@ -42,14 +42,16 @@ switch( process.env.npm_lifecycle_event ) {
 	case 'prod-build' : 
 		config = merge(
 			common,
-			parts.setupCSS( PATHS.src )
+			// parts.setupCSS( PATHS.src )
+			parts.setupStylus( PATHS.src )
 		);
 		break;
 	// DEV SETUP
 	default:
 		config = merge(
 			common,
-			parts.setupCSS( PATHS.src )
+			// parts.setupCSS( PATHS.src )
+			parts.setupStylus( PATHS.src )
 		);
 }
 
