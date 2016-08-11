@@ -9,9 +9,10 @@ const validate = require('webpack-validator');
 const parts = require('./libs/parts');
 // Setup PATHS object
 const PATHS = {
-	entry : path.join(__dirname, 'src/scripts'),
+	entry: path.join(__dirname, 'src/scripts'),
 	src: path.join(__dirname, 'src'),
-	markup : path.join(__dirname, 'src/markup/'),
+	markup: path.join(__dirname, 'src/markup/'),
+	style: path.join(__dirname, 'src/styles/'),
 	build: path.join(__dirname, 'build')
 };
 // Setup common object
