@@ -28,7 +28,6 @@ const common = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'Webpack Core Base Setup',
 			template: PATHS.markup + 'index.html'
 		})
 	]
@@ -39,10 +38,12 @@ var config;
 // Detect how npm is run and branch based on that
 switch( process.env.npm_lifecycle_event ) {
 	// PRODUCTION SET UP
-	case 'prod-build' : 
+	case 'build-prod' : 
 		config = merge(
 			common,
-			// parts.setupCSS( PATHS.src )
+			{
+				devtool: 'source-map'
+			},
 			parts.setupStylus( PATHS.src )
 		);
 		break;
@@ -50,7 +51,9 @@ switch( process.env.npm_lifecycle_event ) {
 	default:
 		config = merge(
 			common,
-			// parts.setupCSS( PATHS.src )
+			{
+				devtool: 'eval-source-map'
+			},
 			parts.setupStylus( PATHS.src )
 		);
 }

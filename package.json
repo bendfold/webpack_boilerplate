@@ -4,8 +4,8 @@
   "description": "webpack core",
   "main": "./src/scripts/index.js",
   "scripts": {
-    "prod-build": "webpack",
-    "dev-build": "webpack",
+    "build-prod": "webpack",
+    "build-dev": "webpack",
     "test": "",
     "start": "live-server --port=8008 --open=./dist --ignore=src,node_modules --watch=./dist"
   },
@@ -20,6 +20,7 @@
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.21.0",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
