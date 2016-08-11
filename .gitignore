@@ -32,4 +32,5 @@ nbproject
 node_modules
 notes
 _temp
+build
 dist
