@@ -10,6 +10,7 @@ const parts = require('./libs/parts');
 // Setup PATHS object
 const PATHS = {
 	entry : path.join(__dirname, 'src/scripts'),
+	src: path.join(__dirname, 'src'),
 	markup : path.join(__dirname, 'src/markup/'),
 	build: path.join(__dirname, 'build')
 };
@@ -39,11 +40,17 @@ var config;
 switch( process.env.npm_lifecycle_event ) {
 	// PRODUCTION SET UP
 	case 'prod-build' : 
-		config = merge(common,{});
+		config = merge(
+			common,
+			parts.setupCSS( PATHS.src )
+		);
 		break;
 	// DEV SETUP
 	default:
-		config = merge(common,{});
+		config = merge(
+			common,
+			parts.setupCSS( PATHS.src )
+		);
 }
 
 module.exports = validate(config, {
