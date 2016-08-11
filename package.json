@@ -4,8 +4,9 @@
   "description": "webpack core",
   "main": "./src/scripts/index.js",
   "scripts": {
-    "dev": "rm -rf ./dist && mkdir ./dist && webpack --config webpack.config.dev.js  --progress -colors --watch",
-    "test": "babel-tape-runner ./test/**/*-test.js | tap-summary",
+    "prod-build": "webpack",
+    "dev-build": "webpack",
+    "test": "",
     "start": "live-server --port=8008 --open=./dist --ignore=src,node_modules --watch=./dist"
   },
   "repository": {
@@ -18,25 +19,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.10.4",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-stage-2": "^6.5.0",
-    "babel-tape-runner": "^2.0.1",
-    "css-loader": "^0.23.1",
-    "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.21.0",
-    "jshint": "^2.9.2",
-    "jshint-loader": "^0.8.3",
-    "live-server": "^1.0.0",
-    "nib": "^1.1.0",
-    "raw-loader": "^0.5.1",
-    "style-loader": "^0.13.1",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^2.1.1",
-    "tap-summary": "^3.0.1",
-    "tape": "^4.6.0",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-merge": "^0.14.1",
+    "webpack-validator": "^2.2.7"
   },
   "dependencies": {}
 }
