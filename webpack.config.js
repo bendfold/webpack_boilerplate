@@ -18,7 +18,7 @@ const PATHS = {
 	entry: path.join(__dirname, 'src/scripts'),
 	src: path.join(__dirname, 'src'),
 	markup: path.join(__dirname, 'src/markup/'),
-	style: path.join(__dirname, 'src/styles/'),
+	scripts: path.join(__dirname, 'src/scripts'),
 	build: path.join(__dirname, 'build')
 };
 // Setup common object
@@ -61,7 +61,8 @@ switch( process.env.npm_lifecycle_event ) {
 			{
 				devtool: 'eval-source-map'
 			},
-			parts.setupStylus( PATHS.src )
+			parts.setupStylus( PATHS.src ),
+			parts.setupJS( PATHS.scripts )
 		);
 }
 

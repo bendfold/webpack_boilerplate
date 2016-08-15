@@ -23,10 +23,12 @@ exports.setupStylus = function( paths ) {
 	}
 };
 // JS CONFIG
-// exports.setupJS = function( paths ) {
-// 	return {
-// 		module : {
-
-// 		}
-// 	}
-// };
+exports.setupJS = function( paths ) {
+	return {
+		module : {
+			test: /\.js?$/,
+			loaders: ['babel'],
+			include: paths
+		}
+	}
+};
