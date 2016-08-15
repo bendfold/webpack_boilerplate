@@ -5,6 +5,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 // Validation for the config file
 const validate = require('webpack-validator');
+const Joi = require('webpack-validator').Joi;
+// This joi schema will be `Joi.concat`-ed with the internal schema
+const localSchemaExtension = Joi.object({
+	// Allow custom properties, don't perform any additional validation on them
+	stylus: Joi.any()
+})
 // Plugin specific configuration
 const parts = require('./libs/parts');
 // Setup PATHS object
@@ -60,5 +66,6 @@ switch( process.env.npm_lifecycle_event ) {
 }
 
 module.exports = validate(config, {
-	quiet: true
+	quiet: true,
+	schemaExtension: localSchemaExtension
 });
