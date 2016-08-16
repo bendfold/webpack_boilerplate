@@ -4,8 +4,8 @@
   "description": "webpack core",
   "main": "./src/scripts/index.js",
   "scripts": {
-    "build-prod": "webpack",
-    "build-dev": "webpack",
+    "build-prod": "webpack --progress -colors",
+    "build-dev": "rm -rf ./dist && mkdir ./dist && webpack --progress -colors --watch",
     "test": "",
     "start": "live-server --port=8008 --open=./dist --ignore=src,node_modules --watch=./dist"
   },
@@ -14,7 +14,10 @@
     "url": "null"
   },
   "keywords": [
-    "webpack"
+    "webpack",
+    "babel",
+    "es6",
+    "stylus"
   ],
   "author": "",
   "license": "ISC",
@@ -23,6 +26,7 @@
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.21.0",
+    "live-server": "^1.1.0",
     "nib": "^1.1.2",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",

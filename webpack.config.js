@@ -61,7 +61,6 @@ switch( process.env.npm_lifecycle_event ) {
 			{
 				devtool: 'eval-source-map'
 			},
-			parts.clean(PATHS.build),
 			parts.setupStylus( PATHS.src )
 		);
 }

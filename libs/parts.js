@@ -36,7 +36,6 @@ exports.setupJS = function( paths ) {
 	}
 };
 
-
 // Set up build folder cleaning
 exports.clean = function(path) {
 	return {
