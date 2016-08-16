@@ -9,7 +9,8 @@ const Joi = require('webpack-validator').Joi;
 // This joi schema will be `Joi.concat`-ed with the internal schema
 const localSchemaExtension = Joi.object({
 	// Allow custom properties, don't perform any additional validation on them
-	stylus: Joi.any()
+	stylus: Joi.any(),
+	eslint: Joi.any()
 })
 // Plugin specific configuration
 const parts = require('./libs/parts');
@@ -31,6 +32,23 @@ const common = {
 	output: {
 		path: PATHS.build,
 		filename: '[name].js'
+	},
+	module: {
+		preLoaders: [
+			{
+				test: /\.js?$/,
+				loaders: ['eslint'],
+				include: PATHS.src
+			}
+		]
+	},
+	eslint: {
+		failOnWarning: false,
+		failOnError: true,
+		configFile: './.eslintrc'
+	},
+	resolve: {
+		extensions: ['', '.js']
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
