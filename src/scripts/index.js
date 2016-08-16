@@ -1,10 +1,8 @@
 require('../styles/index.styl');
 
-var exampleAdder = require('./example-adder.js');
+var exampleMath = require('./example-math.js');
 
-console.log('exampleAdder ', exampleAdder);
-
-let test = exampleAdder.exampleAdder(5);
-console.log('test(5) => ', test(5) );
-console.log('test(10) => ', test(10) );
-console.log('test(20) => ', test(20) );
+let fivePlus = exampleMath.adder(5);
+console.log('fivePlus(5) => ', fivePlus(5) );
+console.log('fivePlus(10) => ', fivePlus(10) );
+console.log('fivePlus(20) => ', fivePlus(20) );

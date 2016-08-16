@@ -15,11 +15,10 @@ const localSchemaExtension = Joi.object({
 const parts = require('./libs/parts');
 // Setup PATHS object
 const PATHS = {
-	entry: path.join(__dirname, 'src/scripts'),
 	src: path.join(__dirname, 'src'),
-	markup: path.join(__dirname, 'src/markup/'),
 	scripts: path.join(__dirname, 'src/scripts'),
-	build: path.join(__dirname, 'build')
+	markup: path.join(__dirname, 'src/markup'),
+	build: path.join(__dirname, 'dist')
 };
 // Setup common object
 const common = {
@@ -27,7 +26,7 @@ const common = {
 	// We'll be using the latter form given it's
 	// convenient with more complex configurations.
 	entry: {
-		app: PATHS.entry
+		app: PATHS.scripts
 	},
 	output: {
 		path: PATHS.build,
@@ -35,7 +34,7 @@ const common = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: PATHS.markup + 'index.html'
+			template: PATHS.markup + '/index.html'
 		})
 	]
 };
@@ -51,6 +50,7 @@ switch( process.env.npm_lifecycle_event ) {
 			{
 				devtool: 'source-map'
 			},
+			parts.clean( PATHS.build ),
 			parts.setupStylus( PATHS.src )
 		);
 		break;
@@ -61,8 +61,8 @@ switch( process.env.npm_lifecycle_event ) {
 			{
 				devtool: 'eval-source-map'
 			},
-			parts.setupStylus( PATHS.src ),
-			parts.setupJS( PATHS.scripts )
+			parts.clean(PATHS.build),
+			parts.setupStylus( PATHS.src )
 		);
 }
 

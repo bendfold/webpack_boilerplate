@@ -1,5 +1,7 @@
 const webpack = require( 'webpack' );
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 
 // STYLUS CONFIG
 exports.setupStylus = function( paths ) {
@@ -14,7 +16,7 @@ exports.setupStylus = function( paths ) {
 			]
 		},
 		plugins : [
-			new ExtractTextPlugin('[name][chunkhash].css')
+			new ExtractTextPlugin('[name].[chunkhash].css')
 		],
 		stylus: {
 			use: [require('nib')()],
@@ -22,6 +24,7 @@ exports.setupStylus = function( paths ) {
 		}
 	}
 };
+
 // JS CONFIG
 exports.setupJS = function( paths ) {
 	return {
@@ -30,5 +33,19 @@ exports.setupJS = function( paths ) {
 			loaders: ['babel'],
 			include: paths
 		}
+	}
+};
+
+
+// Set up build folder cleaning
+exports.clean = function(path) {
+	return {
+		plugins: [
+			new CleanWebpackPlugin([path], {
+				// Without `root` CleanWebpackPlugin won't point to our
+				// project and will fail to work.
+				root: process.cwd()
+			})
+		]
 	}
 };
