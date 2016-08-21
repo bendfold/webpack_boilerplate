@@ -40,6 +40,13 @@ const common = {
 				loaders: ['eslint'],
 				include: PATHS.src
 			}
+		],
+		loaders: [
+			{
+				test: /\.js?$/,
+				loaders: ['babel?cacheDirectory'],
+				include: PATHS.src
+			}
 		]
 	},
 	eslint: {
@@ -48,7 +55,7 @@ const common = {
 		configFile: './.eslintrc'
 	},
 	resolve: {
-		extensions: ['', '.js']
+		extensions: ['', '.js', '.styl']
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
@@ -69,7 +76,8 @@ switch( process.env.npm_lifecycle_event ) {
 				devtool: 'source-map'
 			},
 			parts.clean( PATHS.build ),
-			parts.setupStylus( PATHS.src )
+			parts.setupStylus( PATHS.src ),
+			parts.minifyJS()
 		);
 		break;
 	// DEV SETUP
