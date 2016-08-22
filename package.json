@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "null"
+    "url": "https://github.com/bendfold/webpack_frontend_core.git"
   },
   "keywords": [
     "webpack",
