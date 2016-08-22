@@ -1,4 +1,4 @@
-# Base starting point for Webpack projects
+# Base starting point for frontend Webpack projects
 
 ## Includes
 - CSS pre-processing via [Stylus][stylus] & [Nib][nib]
