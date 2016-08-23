@@ -4,9 +4,7 @@
 	"extends": [
 		"eslint:recommended"
 	],
-	// Enable ES6 support. If you want to use custom Babel
-	// features, you will need to enable a custom parser
-	// as described in a section below.
+	// Enable ES6 support.
 	"parserOptions": {
 		"ecmaVersion": 6,
 		"sourceType": "module"
