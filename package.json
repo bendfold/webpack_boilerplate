@@ -2,8 +2,11 @@
   "name": "webpack-2-frontend-core",
   "version": "2.0.0",
   "description": "webpack 2 frontend core",
-  "main": "./src/scripts/index.js",
-  "scripts": {},
+  "main": "./src/index.js",
+  "scripts": {
+    "dev": "webpack -d --watch",
+    "prod": "webpack -p"
+  },
   "repository": {
     "type": "git",
     "url": "https://ocowdry@bitbucket.org/ocowdry/webpack_core.git"
@@ -17,6 +20,8 @@
   ],
   "author": "Owen Cowdry",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack": "^2.3.3"
+  },
   "dependencies": {}
 }
