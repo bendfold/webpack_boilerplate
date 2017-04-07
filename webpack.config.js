@@ -9,13 +9,26 @@ module.exports = {
 		filename: './js/app.bundle.js'
 	},
 	module : {
-		rules: [{
-			test: /\.scss$/,
-			use: ExtractTextPlugin.extract({
-				fallback: 'style-loader',
-				use: ['css-loader', 'sass-loader']
-			})
-		}]
+		rules: [
+			{
+				test: /\.scss$/,
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: ['css-loader', 'sass-loader']
+				})
+			},
+			{
+				test: /\.js$/,
+				use: ['babel-loader'],
+				exclude: path.resolve(__dirname, 'node_modules')
+			}
+		]
+	},
+	devServer: {
+		contentBase: path.join(__dirname , '/dist'),
+		compress: true,
+		stats: 'errors-only',
+		open: true
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
