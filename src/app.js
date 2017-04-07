@@ -1,3 +1,3 @@
 const css = require('./app.scss');
 
-console.log('test fooooooo .. mmmmmmmmmmmmmmmm');
+console.log('Dev server running --');
