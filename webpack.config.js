@@ -5,7 +5,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
 	entry: './src/app.js',
 	output: {
-		path: path.resolve(__dirname , '/dist'),
+		path: path.join(__dirname , '/dist'),
 		filename: './js/app.bundle.js'
 	},
 	module : {
@@ -20,7 +20,7 @@ module.exports = {
 			{
 				test: /\.js$/,
 				use: ['babel-loader'],
-				exclude: path.resolve(__dirname, 'node_modules')
+				exclude: path.join(__dirname, 'node_modules')
 			}
 		]
 	},
@@ -33,9 +33,9 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: 'Webpack 2 Core Setup',
-			minify: {
-				collapseWhitespace: true
-			},
+			// minify: {
+			// 	collapseWhitespace: true
+			// },
 			hash: true,
 			template: './src/index.ejs'
 		}),

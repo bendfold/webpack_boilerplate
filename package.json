@@ -4,8 +4,10 @@
   "description": "webpack 2 frontend core",
   "main": "./src/index.js",
   "scripts": {
-    "dev": "webpack-dev-server",
-    "prod": "webpack -p"
+    "serve": "webpack-dev-server",
+    "static": "webpack -d",
+    "prod": "npm run clean && webpack -p",
+    "clean": "rimraf ./dist/*"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,7 @@
     "node-sass": "^4.5.2",
     "react": "^15.5.0",
     "react-dom": "^15.5.0",
+    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
     "webpack": "^2.3.3",
