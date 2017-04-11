@@ -21,6 +21,10 @@ module.exports = {
 				test: /\.js$/,
 				use: ['babel-loader'],
 				exclude: path.join(__dirname, 'node_modules')
+			},
+			{
+				test: /\.pug$/,
+				use: ['html-loader', 'pug-html-loader']
 			}
 		]
 	},
@@ -37,7 +41,7 @@ module.exports = {
 			// 	collapseWhitespace: true
 			// },
 			hash: true,
-			template: './src/index.ejs'
+			template: './src/index.pug'
 		}),
 		new ExtractTextPlugin("./styles/app.css")
 	]
