@@ -24,7 +24,7 @@ module.exports = {
 			},
 			{
 				test: /\.pug$/,
-				use: ['html-loader', 'pug-html-loader']
+				use: ['pug-loader']
 			}
 		]
 	},
@@ -36,12 +36,12 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'Webpack 2 Core Setup',
+			title: 'Webpack 2 Front End Boilerplate',
 			// minify: {
 			// 	collapseWhitespace: true
 			// },
 			hash: true,
-			template: './src/index.pug'
+			template: './src/markup/index.pug'
 		}),
 		new ExtractTextPlugin("./styles/app.css")
 	]
