@@ -1,4 +1,4 @@
-const css = require('./styles/app.scss');
+import css from './styles/app.styl';
 
 import appInit from './scripts/app-init';
 

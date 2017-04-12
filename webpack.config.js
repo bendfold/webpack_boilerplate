@@ -1,6 +1,33 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const nib = require("nib");
+
+// TODO - EXTRACT THIS OUT TO CONFIG
+const isProduction = process.env.NODE_ENV.trim() === 'production';
+const cssDev = ['style-loader', 'css-loader',
+					{
+						loader: 'stylus-loader',
+						options: {
+							use: [nib()],
+						}
+					}
+				];
+const cssProd = ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: [ 'css-loader', 'stylus-loader']
+				});
+const cssConfig = isProduction ? cssProd : cssDev;
+
+
+
+
+console.log('isProduction ', isProduction);
+console.log('process.env.NODE_ENV ', process.env.NODE_ENV.trim().length, '---', 'production'.length);
+console.log('process.env.NODE_ENV === production ', process.env.NODE_ENV === 'production');
+
+
 
 module.exports = {
 	entry: './src/app.js',
@@ -11,11 +38,8 @@ module.exports = {
 	module : {
 		rules: [
 			{
-				test: /\.scss$/,
-				use: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: ['css-loader', 'sass-loader']
-				})
+				test: /\.styl$/,
+				use: cssConfig
 			},
 			{
 				test: /\.js$/,
@@ -32,17 +56,22 @@ module.exports = {
 		contentBase: path.join(__dirname , '/dist'),
 		compress: true,
 		stats: 'errors-only',
+		hot: true, // enable HMR on the server
 		open: true
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'Webpack 2 Front End Boilerplate',
-			// minify: {
-			// 	collapseWhitespace: true
-			// },
 			hash: true,
 			template: './src/markup/index.pug'
 		}),
-		new ExtractTextPlugin("./styles/app.css")
+		new ExtractTextPlugin({
+			filename:"./styles/app.css",
+			disable: !isProduction,
+			allChunks: true
+		}),
+		new webpack.HotModuleReplacementPlugin(),
+		// enable HMR globally
+		new webpack.NamedModulesPlugin()
+		// prints more readable module names in the browser console on HMR updates
 	]
 };
