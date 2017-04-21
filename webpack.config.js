@@ -21,14 +21,6 @@ const cssProd = ExtractTextPlugin.extract({
 const cssConfig = isProduction ? cssProd : cssDev;
 
 
-
-
-console.log('isProduction ', isProduction);
-console.log('process.env.NODE_ENV ', process.env.NODE_ENV.trim().length, '---', 'production'.length);
-console.log('process.env.NODE_ENV === production ', process.env.NODE_ENV === 'production');
-
-
-
 module.exports = {
 	entry: './src/app.js',
 	output: {
@@ -40,6 +32,10 @@ module.exports = {
 			{
 				test: /\.styl$/,
 				use: cssConfig
+			},
+			{
+				test: /\.(gif|png|jpe?g|svg)$/i,
+				use: ['file-loader?name=[name].[ext]&outputPath=images/']
 			},
 			{
 				test: /\.js$/,

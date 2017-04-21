@@ -4,8 +4,8 @@
   "description": "webpack 2 frontend core",
   "main": "./src/index.js",
   "scripts": {
-    "serve": "webpack-dev-server",
-    "static": "webpack -d",
+    "serve": "set NODE_ENV=development && webpack-dev-server",
+    "static": "set NODE_ENV=development && webpack -d",
     "prod": "npm run clean && set NODE_ENV=production && webpack -p",
     "clean": "rimraf ./dist/*"
   },
@@ -32,6 +32,7 @@
     "eslint": "^3.19.0",
     "eslint-loader": "^1.7.1",
     "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.28.0",
     "nib": "^1.1.2",
     "node-sass": "^4.5.2",
