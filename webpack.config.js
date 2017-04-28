@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const nib = require("nib");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const nib = require('nib');
 
 // TODO - EXTRACT THIS OUT TO CONFIG
 const isProduction = process.env.NODE_ENV.trim() === 'production';
@@ -38,6 +38,12 @@ module.exports = {
 				use: ['file-loader?name=[name].[ext]&outputPath=images/']
 			},
 			{
+				enforce: 'pre',
+				test: /.\js$/,
+				exclude: path.join(__dirname, 'node_modules'),
+				loader: ['eslint-loader']
+			},
+			{
 				test: /\.js$/,
 				use: ['babel-loader'],
 				exclude: path.join(__dirname, 'node_modules')
@@ -61,7 +67,7 @@ module.exports = {
 			template: './src/markup/index.pug'
 		}),
 		new ExtractTextPlugin({
-			filename:"./styles/app.css",
+			filename: './styles/app.css',
 			disable: !isProduction,
 			allChunks: true
 		}),

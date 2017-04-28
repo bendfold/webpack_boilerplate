@@ -7,6 +7,7 @@
     "serve": "set NODE_ENV=development && webpack-dev-server",
     "static": "set NODE_ENV=development && webpack -d",
     "prod": "npm run clean && set NODE_ENV=production && webpack -p",
+    "lint:js": "eslint app/ webpack.*.js --cache",
     "clean": "rimraf ./dist/*"
   },
   "repository": {

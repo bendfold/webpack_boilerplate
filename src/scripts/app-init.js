@@ -4,7 +4,7 @@ const CLASSNAME = {
 };
 
 function appInit() {
-	document.addEventListener('DOMContentLoaded', function(event) {
+	document.addEventListener('DOMContentLoaded', function() {
 		// TODO - Pull this outo to helper function
 		const htmlElem = document.querySelector('html');
 		htmlElem.classList.remove(CLASSNAME.noJs);
