@@ -4,76 +4,66 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const nib = require('nib');
 
-// TODO - EXTRACT THIS OUT TO CONFIG
-const isProduction = process.env.NODE_ENV.trim() === 'production';
-const cssDev = ['style-loader', 'css-loader',
-					{
-						loader: 'stylus-loader',
-						options: {
-							use: [nib()],
-						}
-					}
-				];
-const cssProd = ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: [ 'css-loader', 'stylus-loader']
-				});
-const cssConfig = isProduction ? cssProd : cssDev;
+const merge = require('webpack-merge');
+const parts = require('./webpack.parts');
 
+const PATHS = {
+	src: path.join(__dirname, 'src'),
+	dist: path.join(__dirname, 'dist'),
+};
 
-module.exports = {
-	entry: './src/app.js',
-	output: {
-		path: path.join(__dirname , '/dist'),
-		filename: './js/app.bundle.js'
-	},
-	module : {
-		rules: [
-			{
-				test: /\.styl$/,
-				use: cssConfig
-			},
-			{
-				test: /\.(gif|png|jpe?g|svg)$/i,
-				use: ['file-loader?name=[name].[ext]&outputPath=images/']
-			},
-			{
-				enforce: 'pre',
-				test: /.\js$/,
-				exclude: path.join(__dirname, 'node_modules'),
-				loader: ['eslint-loader']
-			},
-			{
-				test: /\.js$/,
-				use: ['babel-loader'],
-				exclude: path.join(__dirname, 'node_modules')
-			},
-			{
-				test: /\.pug$/,
-				use: ['pug-loader']
-			}
-		]
-	},
-	devServer: {
+const commonConfig = merge([
+	{
+		entry: {
+			app: PATHS.src + '/app.js',
+		},
+		output: {
+			path: PATHS.dist,
+			filename: '[name].js',
+		},
+		module : {
+			rules: [
+				{
+					test: /\.js$/,
+					use: ['babel-loader'],
+					exclude: path.join(__dirname, 'node_modules')
+				},
+				{
+					test: /\.pug$/,
+					use: ['pug-loader']
+				}
+			]
+		},
+		plugins: [
+			new HtmlWebpackPlugin({
+				hash: true,
+				template: PATHS.src + '/markup/index.pug'
+			})
+		],
+	}
+]);
+
+const developmentConfig = merge([
+	parts.devServer({
 		contentBase: path.join(__dirname , '/dist'),
 		compress: true,
 		stats: 'errors-only',
 		hot: true, // enable HMR on the server
 		open: true
-	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			hash: true,
-			template: './src/markup/index.pug'
-		}),
-		new ExtractTextPlugin({
-			filename: './styles/app.css',
-			disable: !isProduction,
-			allChunks: true
-		}),
-		new webpack.HotModuleReplacementPlugin(),
-		// enable HMR globally
-		new webpack.NamedModulesPlugin()
-		// prints more readable module names in the browser console on HMR updates
-	]
+	}),
+	{
+		plugins: [
+			new webpack.HotModuleReplacementPlugin(),
+			// enable HMR globally
+			new webpack.NamedModulesPlugin()
+			// prints more readable module names in the browser console on HMR updates
+		]
+	}
+]);
+
+module.exports = (env) => {
+	if ( process.env.NODE_ENV.trim() === 'production' ) {
+		return merge(commonConfig, productionConfig);
+	}
+	return merge(commonConfig, developmentConfig);
 };
