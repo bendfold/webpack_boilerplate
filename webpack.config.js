@@ -10,6 +10,7 @@ const parts = require('./webpack.parts');
 const PATHS = {
 	src: path.join(__dirname, 'src'),
 	dist: path.join(__dirname, 'dist'),
+	nodeModules: path.join(__dirname, 'node_modules')
 };
 
 const commonConfig = merge([
@@ -21,26 +22,21 @@ const commonConfig = merge([
 			path: PATHS.dist,
 			filename: '[name].js',
 		},
-		module : {
-			rules: [
-				{
-					test: /\.js$/,
-					use: ['babel-loader'],
-					exclude: path.join(__dirname, 'node_modules')
-				},
-				{
-					test: /\.pug$/,
-					use: ['pug-loader']
-				}
-			]
-		},
 		plugins: [
 			new HtmlWebpackPlugin({
 				hash: true,
 				template: PATHS.src + '/markup/index.pug'
 			})
 		],
-	}
+	},
+	parts.parseJs({
+		exclude: PATHS.nodeModules
+	}),
+	parts.lintJs({
+		exclude: PATHS.nodeModules
+	}),
+	parts.parsePug(),
+	// parts.loadImages()
 ]);
 
 const developmentConfig = merge([
@@ -60,6 +56,8 @@ const developmentConfig = merge([
 		]
 	}
 ]);
+
+const productionConfig = {};
 
 module.exports = (env) => {
 	if ( process.env.NODE_ENV.trim() === 'production' ) {
