@@ -32,18 +32,18 @@ const commonConfig = merge([
 	parts.parseJs({
 		exclude: PATHS.nodeModules
 	}),
-	parts.lintJs({
-		exclude: PATHS.nodeModules
-	}),
+	// parts.lintJs({
+	// 	exclude: PATHS.nodeModules
+	// }),
 	parts.parsePug(),
-	// parts.loadImages()
+	parts.loadImages()
 ]);
 
 const developmentConfig = merge([
 	parts.devServer({
 		contentBase: path.join(__dirname , '/dist'),
 		compress: true,
-		stats: 'errors-only',
+		stats: 'normal',
 		hot: true, // enable HMR on the server
 		open: true
 	}),
