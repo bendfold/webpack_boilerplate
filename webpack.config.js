@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const nib = require('nib');
 
+const isProduction = process.env.NODE_ENV.trim() === 'production';
+
 const merge = require('webpack-merge');
 const parts = require('./webpack.parts');
 
@@ -21,6 +23,7 @@ const commonConfig = merge([
 		output: {
 			path: PATHS.dist,
 			filename: '[name].js',
+			publicPath: "/dist/"
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
@@ -47,6 +50,7 @@ const developmentConfig = merge([
 		hot: true, // enable HMR on the server
 		open: true
 	}),
+	parts.loadCss( isProduction ),
 	{
 		plugins: [
 			new webpack.HotModuleReplacementPlugin(),
@@ -57,10 +61,22 @@ const developmentConfig = merge([
 	}
 ]);
 
-const productionConfig = {};
+const productionConfig = merge([
+	parts.loadCss( isProduction ),
+	{
+		plugins: [
+			new ExtractTextPlugin({
+				filename: './styles/app.css',
+				disable: !isProduction,
+				allChunks: true
+			}),
+		]
+	}
+]);
+
 
 module.exports = (env) => {
-	if ( process.env.NODE_ENV.trim() === 'production' ) {
+	if ( isProduction ) {
 		return merge(commonConfig, productionConfig);
 	}
 	return merge(commonConfig, developmentConfig);

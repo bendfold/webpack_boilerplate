@@ -1,5 +1,5 @@
 /* exported css */
-// import css from './styles/app.styl';
+import css from './styles/app.styl';
 import appInit from './scripts/app-init';
 
 appInit();
