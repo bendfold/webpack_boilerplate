@@ -46,7 +46,13 @@ exports.loadCss = (isProduction) => {
 	const cssProd = ExtractTextPlugin.extract({
 						fallback: 'style-loader',
 						use: [ 
-							'css-loader',
+							// 'css-loader',
+							{
+								loader: 'css-loader',
+								options: {
+									importLoaders: 1
+								}
+							},
 							{
 								loader: 'stylus-loader?sourceMap',
 								options: {

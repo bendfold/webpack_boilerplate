@@ -65,9 +65,7 @@ const productionConfig = merge([
 	{
 		plugins: [
 			new ExtractTextPlugin({
-				filename: './styles/app.css',
-				disable: !isProduction,
-				allChunks: true
+				filename: './styles/app.css'
 			}),
 		]
 	}
