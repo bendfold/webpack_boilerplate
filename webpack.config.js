@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const nib = require('nib');
 
-const isProduction = process.env.NODE_ENV.trim() === 'production';
+const isProduction = process.env.NODE_ENV === 'production';
 
 const merge = require('webpack-merge');
 const parts = require('./webpack.parts');
