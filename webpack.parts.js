@@ -45,8 +45,7 @@ exports.loadCss = (isProduction) => {
 
 	const cssProd = ExtractTextPlugin.extract({
 						fallback: 'style-loader',
-						use: [ 
-							// 'css-loader',
+						use: [
 							{
 								loader: 'css-loader',
 								options: {
@@ -61,6 +60,8 @@ exports.loadCss = (isProduction) => {
 							}
 						]
 					});
+
+console.log('isProduction ', isProduction);
 
 	const cssConfig = isProduction ? cssProd : cssDev;
 
@@ -101,4 +102,8 @@ exports.parseJs = ({exclude}) => ({
 			},
 		]
 	}
+});
+
+exports.generateSourceMaps = ({ type }) => ({
+	devtool: type,
 });

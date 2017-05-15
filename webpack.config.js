@@ -50,6 +50,7 @@ const developmentConfig = merge([
 		open: true
 	}),
 	parts.loadCss( isProduction ),
+	parts.generateSourceMaps( { type: 'cheap-module-source-map' } ),
 	{
 		plugins: [
 			new webpack.HotModuleReplacementPlugin(),
@@ -62,6 +63,7 @@ const developmentConfig = merge([
 
 const productionConfig = merge([
 	parts.loadCss( isProduction ),
+	parts.generateSourceMaps( { type: 'source-map' } ),
 	{
 		plugins: [
 			new ExtractTextPlugin({
