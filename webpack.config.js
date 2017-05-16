@@ -18,7 +18,7 @@ const PATHS = {
 const commonConfig = merge([
 	{
 		entry: {
-			app: PATHS.src + '/app.js',
+			app: path.join(__dirname, 'src', 'app.js'),
 		},
 		output: {
 			path: PATHS.dist,
@@ -27,7 +27,7 @@ const commonConfig = merge([
 		plugins: [
 			new HtmlWebpackPlugin({
 				hash: true,
-				template: PATHS.src + '/markup/index.pug'
+				template: path.join(__dirname, 'src', 'markup', 'index.pug')
 			})
 		],
 	},
@@ -43,7 +43,7 @@ const commonConfig = merge([
 
 const developmentConfig = merge([
 	parts.devServer({
-		contentBase: path.join(__dirname , '/dist'),
+		contentBase: PATHS.dist,
 		compress: true,
 		stats: 'normal',
 		hot: true, // enable HMR on the server
@@ -67,7 +67,7 @@ const productionConfig = merge([
 	{
 		plugins: [
 			new ExtractTextPlugin({
-				filename: './styles/app.css'
+				filename: path.join('./', 'styles', 'app.css')
 			}),
 		]
 	}

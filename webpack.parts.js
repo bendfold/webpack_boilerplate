@@ -34,7 +34,14 @@ exports.loadImages = (isProduction) => ({
 });
 
 exports.loadCss = (isProduction) => {
-	const cssDev = ['style-loader', 'css-loader',
+
+	const cssDev = ['style-loader', 
+						{
+							loader: 'css-loader',
+							options: {
+								importLoaders: 1
+							}
+						},
 						{
 							loader: 'stylus-loader?sourceMap',
 							options: {
@@ -53,15 +60,13 @@ exports.loadCss = (isProduction) => {
 								}
 							},
 							{
-								loader: 'stylus-loader?sourceMap',
+								loader: 'stylus-loader',
 								options: {
 									use: [nib()],
 								}
 							}
 						]
 					});
-
-console.log('isProduction ', isProduction);
 
 	const cssConfig = isProduction ? cssProd : cssDev;
 
