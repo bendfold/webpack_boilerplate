@@ -65,7 +65,8 @@ exports.loadCss = (isProduction) => {
 									use: [nib()],
 								}
 							}
-						]
+						],
+						publicPath: '../'
 					});
 
 	const cssConfig = isProduction ? cssProd : cssDev;
