@@ -74,6 +74,7 @@ const productionConfig = merge([
 		safe: true,
 		},
 	}),
+	parts.minifyJs(),
 	{
 		plugins: [
 			new ExtractTextPlugin({

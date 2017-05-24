@@ -2,7 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const nib = require('nib');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const cssnano = require('cssnano');
-
+const BabiliPlugin = require('babili-webpack-plugin');
 
 
 exports.devServer = ({ contentBase,compress,stats,hot,open }) => ({
@@ -100,6 +100,18 @@ exports.minifyCSS = ({ options }) => ({
 	],
 });
 
+exports.parseJs = ({exclude}) => ({
+	module : {
+		rules: [
+			{
+				test: /\.js$/,
+				use: ['babel-loader'],
+				exclude
+			},
+		]
+	}
+});
+
 exports.lintJs = ({exclude}) => ({
 	module: {
 		rules: [
@@ -113,16 +125,10 @@ exports.lintJs = ({exclude}) => ({
 	},
 });
 
-exports.parseJs = ({exclude}) => ({
-	module : {
-		rules: [
-			{
-				test: /\.js$/,
-				use: ['babel-loader'],
-				exclude
-			},
-		]
-	}
+exports.minifyJs = () => ({
+	plugins: [
+		new BabiliPlugin(),
+	],
 });
 
 exports.generateSourceMaps = ({ type }) => ({
