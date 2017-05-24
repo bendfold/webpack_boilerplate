@@ -84,7 +84,6 @@ const productionConfig = merge([
 	}
 ]);
 
-
 module.exports = (env) => {
 	if ( isProduction ) {
 		return merge(commonConfig, productionConfig);
