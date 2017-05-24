@@ -34,9 +34,9 @@ const commonConfig = merge([
 	parts.parseJs({
 		exclude: PATHS.nodeModules
 	}),
-	// parts.lintJs({
-	// 	exclude: PATHS.nodeModules
-	// }),
+	parts.lintJs({
+		exclude: PATHS.nodeModules
+	}),
 	parts.parsePug(),
 	parts.loadImages()
 ]);

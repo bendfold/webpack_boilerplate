@@ -5,13 +5,19 @@ module.exports = {
 		"es6": true,
 		"node": true,
 	},
-	"extends": "eslint:recommended",
+	// Extend existing configuration
+	// from ESlint and eslint-plugin-react defaults.
+	"extends": [
+		"eslint:recommended"
+	],
+	// Enable ES6 support.
 	"parserOptions": {
 		"ecmaVersion": 6,
-		"sourceType": "module",
-		"ecmaFeatures": {
-			"jsx": true
-		}
+		"sourceType": "module"
+	},
+	"env": {
+		"browser": true,
+		"node": true
 	},
 	"rules": {
 		// Disable `no-console` rule
@@ -21,12 +27,6 @@ module.exports = {
 		// Default to single quotes and raise an error if something
 		// else is used
 		"quotes": [2, "single"],
-		"semi" : [2, "always"],
-		"no-unused-vars": ["error", { 
-				"vars": "local", 
-				"args": "after-used", 
-				"ignoreRestSiblings": false 
-			}
-		]
+		"semi" : [2, "always"]
 	},
 };
