@@ -49,7 +49,7 @@ const developmentConfig = merge([
 		hot: true, // enable HMR on the server
 		open: true
 	}),
-	parts.loadCss( isProduction ),
+	parts.parseStylus( isProduction ),
 	parts.generateSourceMaps( { type: 'cheap-module-source-map' } ),
 	{
 		plugins: [
@@ -62,8 +62,18 @@ const developmentConfig = merge([
 ]);
 
 const productionConfig = merge([
-	parts.loadCss( isProduction ),
+	parts.parseStylus( isProduction ),
 	parts.generateSourceMaps( { type: 'source-map' } ),
+	parts.minifyCSS({
+		options: {
+			discardComments: {
+			removeAll: true,
+		},
+		// Run cssnano in safe mode to avoid
+		// potentially unsafe transformations.
+		safe: true,
+		},
+	}),
 	{
 		plugins: [
 			new ExtractTextPlugin({

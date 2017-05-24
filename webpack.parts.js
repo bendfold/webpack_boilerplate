@@ -1,5 +1,9 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const nib = require('nib');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const cssnano = require('cssnano');
+
+
 
 exports.devServer = ({ contentBase,compress,stats,hot,open }) => ({
 	devServer: {
@@ -33,7 +37,7 @@ exports.loadImages = (isProduction) => ({
 	}
 });
 
-exports.loadCss = (isProduction) => {
+exports.parseStylus = (isProduction) => {
 
 	const cssDev = ['style-loader', 
 						{
@@ -84,6 +88,17 @@ exports.loadCss = (isProduction) => {
 
 	return cssLoadConfig;
 };
+
+
+exports.minifyCSS = ({ options }) => ({
+	plugins: [
+		new OptimizeCSSAssetsPlugin({
+			cssProcessor: cssnano,
+			cssProcessorOptions: options,
+			canPrint: false,
+		}),
+	],
+});
 
 exports.lintJs = ({exclude}) => ({
 	module: {
