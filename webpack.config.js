@@ -37,6 +37,11 @@ const commonConfig = merge([
 	parts.lintJs({
 		exclude: PATHS.nodeModules
 	}),
+	parts.loadFonts({
+		options: {
+			name: '[name].[ext]',
+		},
+	}),
 	parts.parsePug(),
 	parts.loadImages()
 ]);

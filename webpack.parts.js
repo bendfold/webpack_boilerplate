@@ -134,3 +134,21 @@ exports.minifyJs = () => ({
 exports.generateSourceMaps = ({ type }) => ({
 	devtool: type,
 });
+
+exports.loadFonts = ({ include, exclude, options } = {}) => ({
+	module: {
+		rules: [
+			{
+				// Capture eot, ttf, woff, and woff2
+				test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+				include,
+				exclude,
+
+				use: {
+					loader: 'file-loader',
+					options,
+				},
+			},
+		],
+	},
+});
