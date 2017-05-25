@@ -4,7 +4,7 @@
 - HTML templating from [pug][pug]
 - CSS pre-processing via [Stylus][stylus] & [Nib][nib]
 - CSS reset from [normalize][normalize]
-- ES6 Transpiling via [Babel][babel]
+- ES6 Transpiling via [Babel][babel] and minification from [Babili][babili]
 - [Hot Module Replacement][HMR]
 - Linting via [eslint][eslint] / [Options][eslint-options]
 - Testing via [Tape][tape] & [TAP][tap]
@@ -16,6 +16,7 @@
 [stylus]:<http://stylus-lang.com/>
 [nib]:<https://tj.github.io/nib/>
 [babel]:<https://babeljs.io/>
+[babili]: <https://github.com/babel/babili>
 [eslint]:<http://eslint.org/>
 [eslint-options]:<http://eslint.org/docs/2.0.0/rules/>
 [tape]: <https://github.com/substack/tape>

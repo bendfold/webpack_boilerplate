@@ -3,13 +3,17 @@ html.no-js(lang="en")
 	head
 		meta(charset="UTF-8")
 		meta(http-equiv="x-ua-compatible" content="ie=edge")
-		title Core Webpack 2 Set Up
+		title Webpack 2 Boilerplate
 		meta(name="description" content="TODO")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 	body
 		include includes/header.pug
-		
-		img(src=require('../images/js_logo.png'))
-
-		#root
+		ul
+			li HTML templates via #[a(href='https://pugjs.org/') Pug]
+			li CSS via #[a(href='http://stylus-lang.com/') Stylus] &amp; #[a(href='https://github.com/tj/nib') Nib]
+			li ES2015 and beyond via #[a(href='https://babeljs.io/') Babel]
+			li Javascript linting from #[a(href='http://eslint.org/') eslint]
+			li Javascript minification from #[a(href='https://github.com/babel/babili') babili]
+			li Unit tests from #[a(href='https://github.com/substack/tape') Tape] &amp; #[a(href='https://github.com/zoubin/tap-summary') Tap Summary]
+			li Foreground images like this #[img.example-foreground-img(src=require('../images/js_logo.png'))] and background images like this #[i.example-foreground-img]
 		
