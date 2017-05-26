@@ -7,13 +7,18 @@ html.no-js(lang="en")
 		meta(name="description" content="TODO")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 	body
-		include includes/header.pug
-		ul
-			li HTML templates via #[a(href='https://pugjs.org/') Pug]
-			li CSS via #[a(href='http://stylus-lang.com/') Stylus] &amp; #[a(href='https://github.com/tj/nib') Nib]
-			li ES2015 and beyond via #[a(href='https://babeljs.io/') Babel]
-			li Javascript linting from #[a(href='http://eslint.org/') eslint]
-			li Javascript minification from #[a(href='https://github.com/babel/babili') babili]
-			li Unit tests from #[a(href='https://github.com/substack/tape') Tape] &amp; #[a(href='https://github.com/zoubin/tap-summary') Tap Summary]
-			li Foreground images like this #[img.example-foreground-img(src=require('../images/js_logo.png'))] and background images like this #[i.example-foreground-img]
-			li #[a(href="https://fonts.google.com") Webfonts]
+		div.example-body-wrapper
+			include includes/header.pug
+
+			h2 This Webpack 2 boilerplate includes:
+			
+			ul
+				li.example-list-item HTML templates via #[a(href='https://pugjs.org/') Pug]
+				li.example-list-item CSS via #[a(href='http://stylus-lang.com/') Stylus] &amp; #[a(href='https://github.com/tj/nib') Nib]
+				li.example-list-item ES2015 and beyond via #[a(href='https://babeljs.io/') Babel]
+				li.example-list-item Javascript linting from #[a(href='http://eslint.org/') eslint]
+				li.example-list-item Javascript minification from #[a(href='https://github.com/babel/babili') babili]
+				li.example-list-item Unit tests from #[a(href='https://github.com/substack/tape') Tape] &amp; #[a(href='https://github.com/zoubin/tap-summary') Tap Summary]
+				li.example-list-item #[a(href="https://fonts.google.com") Webfonts] in the ttf, eot, svg, woff &amp; woff2 format 
+				li.example-list-item Foreground images like this #[img.example-foreground-img(src=require('../images/js_logo.png'))] 
+				li.example-list-item Background images like this #[i.example-background-img]
