@@ -35,9 +35,13 @@ ul
 	color #333
 
 .example-body-wrapper
-	width 75%
+	width 100%
 	margin 0 auto
-	
+	+for_breakpoint('medium')
+		width 75%
+	+for_breakpoint('large')
+		width 50%
+
 .example-foreground-img
 	display inline-block
 	height 72px

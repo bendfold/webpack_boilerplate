@@ -1,0 +1,16 @@
+/*==========  Mobile First Method  ==========*/
+media_queries = {
+	x-small  : 'only screen and (min-width : 320px)',
+	small  : 'only screen and (min-width : 768px)',
+	medium : 'only screen and (min-width : 992px)',
+	large : 'only screen and (min-width : 1200px)'
+}
+
+for_breakpoint(breakpoints)
+	conditions = ()
+	for breakpoint in breakpoints
+		push(conditions, media_queries[breakpoint])
+		conditions = join(', ', conditions)
+		
+	@media conditions
+		{block}
