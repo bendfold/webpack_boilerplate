@@ -8,12 +8,16 @@ module.exports = {
 	// Extend existing configuration
 	// from ESlint and eslint-plugin-react defaults.
 	"extends": [
-		"eslint:recommended"
+		"eslint:recommended",
+		"plugin:react/recommended"
 	],
 	// Enable ES6 support.
 	"parserOptions": {
 		"ecmaVersion": 6,
-		"sourceType": "module"
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
 	},
 	"env": {
 		"browser": true,
