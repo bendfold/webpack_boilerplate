@@ -1,10 +1,7 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// TODO - Make this import
-const CLASSNAME = {
-	noJs: 'no-js'
-};
+import {CLASSNAME} from './constants/index.js';
 
 function appInit() {
 	document.addEventListener('DOMContentLoaded', function() {
