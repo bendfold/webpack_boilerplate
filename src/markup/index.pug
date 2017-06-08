@@ -1,3 +1,5 @@
+include includes/header
+
 doctype html
 html.no-js(lang="en")
 	head
@@ -8,7 +10,8 @@ html.no-js(lang="en")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 	body
 		div.example-body-wrapper
-			include includes/header.pug
+			
+			+header('Index Header')
 
 			h2 This Webpack 2 boilerplate includes:
 			

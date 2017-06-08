@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const nib = require('nib');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -152,3 +153,21 @@ exports.loadFonts = ({ include, exclude, options } = {}) => ({
 		],
 	},
 });
+
+// Set up HTML plugin
+const setupHtmlPlugin = function( path, fileName, extn ) {
+	return new HtmlWebpackPlugin({
+		hash: true,
+		template: path + '/' + fileName + extn || '.html',
+		filename: fileName + '.html'
+	});
+};
+exports.batchProcessHtml = function( path, fileCollection, extn ) {
+	const htmlInstCollection = [];
+	fileCollection.map(function( fileName ) {
+		htmlInstCollection.push( setupHtmlPlugin(path, fileName, extn) );
+	});
+	return {
+		plugins: htmlInstCollection
+	}
+};

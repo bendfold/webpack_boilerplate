@@ -8,11 +8,14 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const merge = require('webpack-merge');
 const parts = require('./webpack.parts');
+// Pass in file list for the static markup generator
+const pageList = require('./src/markup/page-list.js');
 
 const PATHS = {
 	src: path.join(__dirname, 'src'),
 	dist: path.join(__dirname, 'dist'),
-	nodeModules: path.join(__dirname, 'node_modules')
+	nodeModules: path.join(__dirname, 'node_modules'),
+	markup: path.join(__dirname, 'src', 'markup')
 };
 
 const commonConfig = merge([
@@ -23,14 +26,9 @@ const commonConfig = merge([
 		output: {
 			path: PATHS.dist,
 			filename: '[name].js'
-		},
-		plugins: [
-			new HtmlWebpackPlugin({
-				hash: true,
-				template: path.join(__dirname, 'src', 'markup', 'index.pug')
-			})
-		],
+		}
 	},
+	parts.batchProcessHtml(PATHS.markup, pageList.getList(), '.pug'),
 	parts.parseJs({
 		exclude: PATHS.nodeModules
 	}),
